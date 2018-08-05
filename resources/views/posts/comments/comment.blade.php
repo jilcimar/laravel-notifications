@@ -41,3 +41,15 @@
 @else
     <p>Precisa estar logado para comentar <a href="{{route('login')}}">Clique aqui para entrar</a></p>
 @endif
+
+<br>
+
+<h3>Comentários ({{$post->comments->count()}})</h3>
+@forelse($post->comments as $comment)
+    <p>
+        <b>{{$comment->user->name}} comentou:</b>
+            {{$comment->titulo}} - {{$comment->body}}
+    </p>
+@empty
+    Sem comentários
+@endforelse
