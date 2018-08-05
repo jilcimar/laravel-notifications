@@ -9,7 +9,9 @@
 
                     <div class="card-body">
                         @forelse($posts as $post)
-                            <p>{{$post->titulo}}</p>
+                            <a href="{{route('posts.show',$post->id)}}">
+                                <p>{{$post->titulo}}</p>
+                            </a>
                             <hr>
                         @empty
                             Não há posts cadastrados

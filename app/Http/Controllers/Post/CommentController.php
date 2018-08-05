@@ -2,22 +2,15 @@
 
 namespace App\Http\Controllers\Post;
 
-use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PostController extends Controller
+class CommentController extends Controller
 {
-    private $post;
-    public function __construct(Post $post)
-    {
-        $this->post = $post;
-    }
-
     public function index()
     {
-        $posts = Post::paginate(5);
-        return view('posts.index',compact('posts'));
+        //
     }
 
     public function create()
@@ -25,16 +18,15 @@ class PostController extends Controller
         //
     }
 
-
     public function store(Request $request)
     {
-        //
+        $request->user()->comments()->create($request->all());
+        return back();
     }
 
     public function show($id)
     {
-        $post = $this->post->find($id);
-        return view('posts.show',compact('post'));
+        //
     }
 
     public function edit($id)
@@ -42,12 +34,10 @@ class PostController extends Controller
         //
     }
 
-
     public function update(Request $request, $id)
     {
         //
     }
-
 
     public function destroy($id)
     {
