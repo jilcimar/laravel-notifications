@@ -25,7 +25,7 @@ class PostCommmented extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -53,6 +53,13 @@ class PostCommmented extends Notification implements ShouldQueue
     {
         return [
             //
+        ];
+    }
+
+    public function toDatabase($notifiable)
+    {
+        return [
+            'comment'=> $this->comment
         ];
     }
 }
