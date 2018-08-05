@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Post;
 
+use App\Http\Requests\StoreCommentFormRequest;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,7 +19,7 @@ class CommentController extends Controller
         //
     }
 
-    public function store(Request $request)
+    public function store(StoreCommentFormRequest $request)
     {
         $request->user()->comments()->create($request->all());
         return back();

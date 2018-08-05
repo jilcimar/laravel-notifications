@@ -1,5 +1,22 @@
 <hr>
 @if(auth()->check())
+
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{session('success')}}
+        </div>
+    @endif
+
+    @if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+
+        </div>
+    @endif
     <form action="{{route('comment.store')}}" method="post" class="form">
         @csrf
         <label for="titulo" class="col-md-6 col-form-label text-md-left">Título</label>
