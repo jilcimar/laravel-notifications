@@ -47365,9 +47365,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    created: function created() {
+        this.loadNotifications();
+    },
+
     computed: {
         notifications: function notifications() {
-            return [1, 2, 3];
+            return this.notificationsItems;
+        }
+    },
+
+    data: function data() {
+        return {
+            notificationsItems: []
+        };
+    },
+
+
+    methods: {
+        loadNotifications: function loadNotifications() {
+            axios.get('/notifications').then(function (response) {
+                console.log(response);
+            });
         }
     }
 });

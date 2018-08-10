@@ -15,9 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 
 Route::get('/home', 'Post\PostController@index')->name('home');
 
 $this->resource('posts','Post\PostController');
 $this->post('comment','Post\CommentController@store')->name('comment.store');
+$this->get('notifications', 'NotificationController@notifications');

@@ -17,10 +17,29 @@
 
 <script>
     export default {
+
+        created() {
+            this.loadNotifications()
+        },
         computed: {
-            notifications()
+            notifications() {
+                return this.notificationsItems;
+            }
+        },
+
+        data() {
+            return {
+                notificationsItems: []
+            }
+        },
+
+        methods: {
+            loadNotifications ()
             {
-                return [1,2,3];
+                axios.get('/notifications')
+                    .then(response =>{
+                        console.log(response)
+                    })
             }
         }
     }
