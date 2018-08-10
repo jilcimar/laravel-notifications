@@ -47384,8 +47384,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         loadNotifications: function loadNotifications() {
+            var _this = this;
+
             axios.get('/notifications').then(function (response) {
-                console.log(response);
+                return _this.notificationsItems = response.data.notifications;
             });
         }
     }
@@ -47410,17 +47412,19 @@ var render = function() {
           attrs: { "aria-labelledby": "navbarDropdown" }
         },
         [
-          _vm._l(_vm.notification, function(notification) {
+          _vm._l(_vm.notifications, function(notification) {
             return _c(
               "a",
               {
-                key: notification,
+                key: notification.id,
                 staticClass: "dropdown-item",
                 attrs: { href: "#" }
               },
               [
                 _vm._v(
-                  "\n                " + _vm._s(notification) + "\n            "
+                  "\n                " +
+                    _vm._s(notification.data.comment) +
+                    "\n            "
                 )
               ]
             )

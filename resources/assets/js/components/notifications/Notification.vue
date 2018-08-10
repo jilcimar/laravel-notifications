@@ -6,8 +6,8 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#" v-for="notification in notification" :key ="notification">
-                    {{notification}}
+                <a class="dropdown-item" href="#" v-for="notification in notifications" :key ="notification.id">
+                    {{notification.data.comment}}
                 </a>
                 <a class="dropdown-item" href="#"> Limpar notificações</a>
             </div>
@@ -37,9 +37,7 @@
             loadNotifications ()
             {
                 axios.get('/notifications')
-                    .then(response =>{
-                        console.log(response)
-                    })
+                    .then(response =>this.notificationsItems = response.data.notifications)
             }
         }
     }
