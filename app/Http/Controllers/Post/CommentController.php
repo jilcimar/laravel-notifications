@@ -24,7 +24,7 @@ class CommentController extends Controller
     {
         $comment = $request->user()->comments()->create($request->all());
         $author = $comment->post->user;  //autor do post
-        $author->notify(new PostCommmented($comment));
+//        $author->notify(new PostCommmented($comment));
         return back();
     }
 
